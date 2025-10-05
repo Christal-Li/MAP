@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — Dog Friendly Map</title>
+  <link rel="stylesheet" href="css/profile.css?v=20251005" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div class="brand-text">
+          <div class="app-name">Dog Friendly Map</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="editIdBtn" class="btn ghost">Edit ID</button>
+        <div class="avatar-wrap" tabindex="0" aria-label="User avatar">
+          <img id="headerAvatar" src="" alt="Avatar" class="avatar-sm" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <!-- Left column: profile card -->
+    <aside class="panel profile-panel">
+      <div class="profile-top">
+        <div class="avatar-large-wrap">
+          <img id="profileAvatar" src="" alt="Profile avatar" class="avatar-lg" />
+          <label for="avatarInput" class="upload-overlay" title="Upload avatar">
+            <input id="avatarInput" type="file" accept="image/*" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 12l-7-7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </label>
+        </div>
+
+        <div class="profile-meta">
+          <h2 id="displayName">Guest</h2>
+          <p id="displayId" class="muted">@guest</p>
+          <div class="profile-actions">
+            <button id="openEditProfile" class="btn">Edit Profile</button>
+            <button id="logoutBtn" class="btn ghost">Logout</button>
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="prefs">
+        <h3 class="section-title">Preferences</h3>
+        <div class="pref-list">
+          <div class="pref-item"><strong>Walker time</strong><span id="prefWalkerTime" class="muted">Morning walker</span></div>
+          <div class="pref-item"><strong>Dog size</strong><span id="prefDogSize" class="muted">Small buddies</span></div>
+          <div class="pref-item"><strong>Experience</strong><span id="prefExperience" class="muted">New walker</span></div>
+        </div>
+        <button id="editPrefsBtn" class="back-btn blue">
+          <i class="fas fa-arrow-left"></i>
+          Edit Preferences
+        </button>
+      </div>
+    </aside>
+
+    <!-- Right column: sections -->
+    <section class="content-col">
+      <div class="section-grid">
+        <!-- Dog details card -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Dog Details</h3>
+            <div class="card-actions">
+              <button class="btn icon" data-action="edit" data-section="dogDetails">Edit</button>
+            </div>
+          </div>
+          <div class="card-body" id="dogDetailsCard">
+            <!-- populated by JS -->
+          </div>
+        </article>
+
+        <!-- Saved locations card -->
+        <article class="card">
+          <div class="card-head">
+            <h3>Saved Locations</h3>
+            <div class="card-actions">
+              <button class="btn icon" data-action="add" data-section="savedLocations">Add</button>
+            </div>
+          </div>
+          <div class="card-body" id="savedLocationsCard">
+            <!-- list populated by JS -->
+          </div>
+        </article>
+
+        <div class="profile-back-row">
+          <button class="back-btn" onclick="goBackToHome()">
+            <i class="fas fa-arrow-left"></i>
+            Back
+          </button>
+        </div>
+
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: edit section -->
+  <div id="modal" class="modal hidden" role="dialog" aria-hidden="true">
+    <div class="modal-card" role="document" aria-modal="true">
+      <div class="modal-header">
+        <h3 id="modalTitle">Edit</h3>
+        <button id="modalClose" class="btn icon">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- form injected by JS -->
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancel" class="btn ghost">Cancel</button>
+        <button id="modalSave" class="btn primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm delete -->
+  <div id="confirm" class="modal hidden" aria-hidden="true">
+    <div class="modal-card small">
+      <div class="modal-header"><h3>Confirm</h3></div>
+      <div class="modal-body"><p id="confirmText">Are you sure?</p></div>
+      <div class="modal-footer">
+        <button id="confirmNo" class="btn ghost">No</button>
+        <button id="confirmYes" class="btn danger">Yes, delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js?v=20251005"></script>
+</body>
+</html>
